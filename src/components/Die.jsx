@@ -9,9 +9,9 @@ import { faDiceSix } from '@fortawesome/free-solid-svg-icons';
 
 export default function Die(props) {
     const styles = {
-        backgroundColor: props.isHeld ? "#59E391" : "white"
-    }
-    
+      background: props.isHeld ? 'linear-gradient(90deg, #59E391 1.18%, #A626D3 100%)' : 'white'
+    };
+  
     const getDiceIcon = (value) => {
         switch (value) {
           case 1:

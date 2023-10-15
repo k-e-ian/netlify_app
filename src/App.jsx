@@ -3,6 +3,10 @@ import Die from './components/Die';
 import './App.css';
 import { nanoid } from 'nanoid';
 import Confetti from 'react-confetti';
+import Split from "react-split";
+import Portfolio from './components/Portfolio';
+import Header from './components/Header';
+import Footer from './components/Footer';
 
 function App() {
   const [dice, setDice] = useState(allNewDice());
@@ -144,36 +148,55 @@ function App() {
   }
 
   return (
-    <main>
-      {tenzies && <Confetti />}
-      <h1 className="title">Tenzies</h1>
-      <p className="instructions">
-        Roll until all dice are the same. Click each die to freeze it at its current value between rolls.
-      <br/>
-      <small className="instructions-italic">Game Starts at dice-roll or die-freeze instance.</small>
-      </p>
-      <small style={{fontFamily: 'Inter'}}>
-        High Score: rolls[{highScore?.rolls}], time[{highScore?.time?.minutes}m {highScore?.time?.seconds}s], value[{highScore?.value}]
-      </small>
-      <div className="dice-container">{diceElements}</div>
-      <button className="dice-roll" onClick={rollDice}>
-        {tenzies ? 'New Game' : 'Roll'}
-      </button>
-      <div className="time-display">
-        {isRunning && !tenzies ? (
-          <small>
-            Time: {elapsedMinutes}m {elapsedSeconds}s
+    <div className='page'>
+      <Header />
+      <Split
+        sizes={[40, 60]}
+        direction="horizontal"
+        className='split'
+      >
+    
+        <div className='main' id="main">
+          {tenzies && <Confetti />}
+          <h1 className="title">Tenzies</h1>
+          <p className="instructions">
+            Roll until all dice are the same. Click each die to freeze it at its current value between rolls.
+          <br/>
+          <small className="instructions-italic">Game Starts at dice-roll or die-freeze instance.</small>
+          </p>
+          <code style={{
+            fontWeight: 'bold',
+            backgroundImage: 'linear-gradient(90deg, #A626D3 1.18%, #59E391 100%)',
+            color: 'transparent',
+            webkitBackgroundClip: 'text'
+          }}>
+            High Score: rolls[{highScore?.rolls}], time[{highScore?.time?.minutes}m {highScore?.time?.seconds}s], value[{highScore?.value}]
+          </code>
+          <div className="dice-container">{diceElements}</div>
+          <button className="dice-roll" onClick={rollDice}>
+            {tenzies ? 'New Game' : 'Roll'}
+          </button>
+          <div className="time-display">
+            {isRunning && !tenzies ? (
+              <small>
+                Time: {elapsedMinutes}m {elapsedSeconds}s
+              </small>
+            ) : null}
+          </div>
+          <br/>
+          <small style={{fontFamily: 'Inter'}}>
+            {tenzies
+              ? `You won in ${rollCount} rolls. Time taken: ${elapsedMinutes}m ${elapsedSeconds}s`
+              : `Your Roll Count is ${rollCount}`}
           </small>
-        ) : null}
-      </div>
-      <br/>
-      <small style={{fontFamily: 'Inter'}}>
-        {tenzies
-          ? `You won in ${rollCount} rolls. Time taken: ${elapsedMinutes}m ${elapsedSeconds}s`
-          : `Your Roll Count is ${rollCount}`}
-      </small>
-    </main>
-  );
+        </div>
+        <div className='portfolio' id="main">
+          <Portfolio />
+        </div>
+      </Split>
+      <Footer />
+    </div>
+  )
 }
 
-export default App;
+export default App

@@ -4,14 +4,41 @@
 
 body {
   margin: 0;
-  background-color: #0B2434;
-  padding: 20px;
+  padding: 0;
   font-family: "karla";
+  background: gray;
 }
 
-main {
+.header {
+  display: flex;
+  align-items: center;
+  height: 65px;
+  background: linear-gradient(90deg, #59E391 1.18%, #A626D3 100%);
+  color: white;
+  padding: 20px;
+}
+
+.header--image {
+  height: 350%;
+  width: 130px;
+  margin-right: 0;
+}
+
+.header--title {
+  font-size: 20px; /*20px / 16 === 1.25rem*/
+  margin-right: auto;
+  margin-left: 0;
+} 
+
+.header--project {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.main {
+  margin: 30px;
   background-color: #F5F5F5;
-  height: 400px;
+  height: 480px;
   max-width: 800px;
   border-radius: 5px;
   padding: 20px;
@@ -70,7 +97,7 @@ main {
 .dice-roll {
   height: 50px;
   width: 150px;
-  background-color: #59E391;/*#5035FF;*/
+  background: linear-gradient(90deg, #59E391 1.18%, #A626D3 100%);/*#59E391;#5035FF;*/
   font-size: 1.3rem;
   font-family: "Karla";
   border: none;
@@ -85,5 +112,28 @@ main {
 
 .dice-roll:active {
   box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
+}
+
+.split {
+  display: flex;
+  border: 1px solid #59E391;
+}
+
+.portfolio {
+  margin: 30px;
+  padding: 20px;
+  border-left: 1px solid #59E391;
+}
+
+.portfolio--card {
+  background: white;
+}
+
+footer {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  padding: 20px;
+  background: linear-gradient(90deg, #A626D3 1.18%, #59E391 100%);
 }
 
