@@ -165,10 +165,7 @@ function App() {
           <small className="instructions-italic">Game Starts at dice-roll or die-freeze instance.</small>
           </p>
           <code style={{
-            fontWeight: 'bold',
-            backgroundImage: 'linear-gradient(90deg, #A626D3 1.18%, #59E391 100%)',
-            color: 'transparent',
-            webkitBackgroundClip: 'text'
+            fontWeight: 'bold'
           }}>
             High Score: rolls[{highScore?.rolls}], time[{highScore?.time?.minutes}m {highScore?.time?.seconds}s], value[{highScore?.value}]
           </code>

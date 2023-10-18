@@ -37,7 +37,8 @@ body {
 
 .main {
   margin: 30px;
-  background-color: #F5F5F5;
+  background: rgba(219, 234, 226, 0.1); /* Professional background color */
+
   height: 480px;
   max-width: 800px;
   border-radius: 5px;
@@ -116,7 +117,6 @@ body {
 
 .split {
   display: flex;
-  border: 1px solid #59E391;
 }
 
 .portfolio {
@@ -137,3 +137,60 @@ footer {
   background: linear-gradient(90deg, #A626D3 1.18%, #59E391 100%);
 }
 
+.portfolio-card {
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  padding: 20px;
+  border-radius: 10px;
+  background: rgba(219, 234, 226, 0.1); /* Professional background color */
+  box-shadow: 0 2px 6px rgba(0, 0, 5, 0.1);
+  margin-top: -20px;
+}
+
+.card-image {
+  width: 100%;
+  border-radius: 40%;
+  margin-bottom: 10px;
+}
+
+.card-name {
+  font-size: 18px;
+  margin: 0;
+}
+
+.card-occupation {
+  color: #555;
+  margin: 0;
+}
+
+.card-about {
+  margin-top: 10px;
+  line-height: 1.4;
+}
+
+.card-contact {
+  margin-top: 0px;
+}
+
+.card-email,
+.card-phone {
+  color: #333;
+}
+
+/* Add these CSS rules to your component's stylesheet */
+
+.social-icons {
+  display: flex;
+  justify-content: space-around; /* To evenly space the icons */
+}
+
+.social-icons a {
+  text-decoration: none; /* Remove the underline from links */
+  color: inherit; /* Inherit the color from the parent */
+}
+
+.social-icons a:hover {
+  color: #59E391; /* Change the color on hover to make it blue (you can customize this color) */
+}
