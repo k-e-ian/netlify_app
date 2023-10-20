@@ -7,6 +7,7 @@ import Split from "react-split";
 import Portfolio from './components/Portfolio';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import Content from './components/Content';
 
 function App() {
   const [dice, setDice] = useState(allNewDice());
@@ -80,6 +81,7 @@ function App() {
     }
     setDice((oldDice) =>
       oldDice.map((die) => {
+        console.log(die.isHeld)
         return id === die.id
           ? {
               ...die,
@@ -151,11 +153,12 @@ function App() {
     <div className='page'>
       <Header />
       <Split
-        sizes={[40, 60]}
+        sizes={[45, 30, 25]}
         direction="horizontal"
         className='split'
-      >
-    
+      > 
+        <Content />
+        
         <div className='main' id="main">
           {tenzies && <Confetti />}
           <h1 className="title">Tenzies</h1>
@@ -166,8 +169,9 @@ function App() {
           </p>
           <code style={{
             fontWeight: 'bold'
+            
           }}>
-            High Score: rolls[{highScore?.rolls}], time[{highScore?.time?.minutes}m {highScore?.time?.seconds}s], value[{highScore?.value}]
+            High Score: rolls [ {highScore?.rolls} ], time [ {highScore?.time?.minutes}m {highScore?.time?.seconds}s ], value [ {highScore?.value} ]
           </code>
           <div className="dice-container">{diceElements}</div>
           <button className="dice-roll" onClick={rollDice}>
@@ -187,9 +191,11 @@ function App() {
               : `Your Roll Count is ${rollCount}`}
           </small>
         </div>
-        <div className='portfolio' id="main">
+        
+        <div className='portfolio'>
           <Portfolio />
         </div>
+        
       </Split>
       <Footer />
     </div>

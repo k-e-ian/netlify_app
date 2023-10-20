@@ -8,6 +8,7 @@ import { faDiceFive } from '@fortawesome/free-solid-svg-icons';
 import { faDiceSix } from '@fortawesome/free-solid-svg-icons';
 
 export default function Die(props) {
+    
     const styles = {
       background: props.isHeld ? 'linear-gradient(90deg, #59E391 1.18%, #A626D3 100%)' : 'white'
     };
