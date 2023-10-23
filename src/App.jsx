@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import Die from './components/Die';
-import './App.css';
-import { nanoid } from 'nanoid';
-import Confetti from 'react-confetti';
+import React, { useState, useEffect } from "react";
+import Die from "./components/Die";
+import "./App.css";
+import { nanoid } from "nanoid";
+import Confetti from "react-confetti";
 import Split from "react-split";
-import Portfolio from './components/Portfolio';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import Content from './components/Content';
+import Portfolio from "./components/Portfolio";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import Interact from "./components/Interact";
 
 function App() {
   const [dice, setDice] = useState(allNewDice());
@@ -17,11 +17,10 @@ function App() {
   const [elapsedTime, setElapsedTime] = useState(0);
   const [highScore, setHighScore] = useState(getHighScoreFromLocalStorage());
 
-
   useEffect(() => {
     const allHeld = dice.every((die) => die.isHeld);
     const firstValue = dice[0].value;
-    
+
     const allSameValue = dice.every((die) => die.value === firstValue);
 
     if (allHeld && allSameValue && !tenzies) {
@@ -32,16 +31,16 @@ function App() {
         rolls: rollCount,
         time: {
           minutes: elapsedMinutes,
-          seconds: elapsedSeconds
+          seconds: elapsedSeconds,
         },
-        value: firstValue 
-      }
-      let savedHighScore = getHighScoreFromLocalStorage()
-      
+        value: firstValue,
+      };
+      let savedHighScore = getHighScoreFromLocalStorage();
+
       if (!savedHighScore || isBetterScore(currentScore, savedHighScore)) {
-        setHighScore(currentScore)
-        saveHighScoreToLocalStorage(currentScore)
-      } 
+        setHighScore(currentScore);
+        saveHighScoreToLocalStorage(currentScore);
+      }
     }
   }, [dice, tenzies, rollCount, elapsedTime]);
 
@@ -61,7 +60,7 @@ function App() {
 
   function generateNewDie() {
     return {
-      value: Math.trunc((Math.random() * 6) + 1),
+      value: Math.trunc(Math.random() * 6 + 1),
       isHeld: false,
       id: nanoid(),
     };
@@ -81,7 +80,7 @@ function App() {
     }
     setDice((oldDice) =>
       oldDice.map((die) => {
-        console.log(die.isHeld)
+        console.log(die.isHeld);
         return id === die.id
           ? {
               ...die,
@@ -101,15 +100,11 @@ function App() {
       setDice(allNewDice());
     } else {
       if (!isRunning) {
-        setIsRunning(true)
+        setIsRunning(true);
       }
       setRollCount((prevCount) => prevCount + 1);
       setDice((oldDice) =>
-        oldDice.map((die) =>
-          die.isHeld === true
-            ? die
-            : generateNewDie()
-        )
+        oldDice.map((die) => (die.isHeld === true ? die : generateNewDie()))
       );
     }
   }
@@ -121,20 +116,20 @@ function App() {
       key={die.id}
       value={die.value}
     />
-  ))
+  ));
 
   const elapsedMinutes = Math.floor(elapsedTime / 60000);
   const elapsedSeconds = Math.floor((elapsedTime % 60000) / 1000);
 
   function getHighScoreFromLocalStorage() {
-    const highScoreString = localStorage.getItem('highScore');
+    const highScoreString = localStorage.getItem("highScore");
     return highScoreString ? JSON.parse(highScoreString) : null;
   }
-  
+
   function saveHighScoreToLocalStorage(highScore) {
-    localStorage.setItem('highScore', JSON.stringify(highScore));
+    localStorage.setItem("highScore", JSON.stringify(highScore));
   }
-  
+
   function isBetterScore(currentScore, savedScore) {
     // Compare based on rolls or time
     if (currentScore.rolls < savedScore.rolls) {
@@ -150,32 +145,34 @@ function App() {
   }
 
   return (
-    <div className='page'>
+    <div className="page">
       <Header />
-      <Split
-        sizes={[45, 30, 25]}
-        direction="horizontal"
-        className='split'
-      > 
-        <Content />
-        
-        <div className='main' id="main">
+      <Split sizes={[45, 30, 25]} direction="horizontal" className="split">
+        <Interact />
+
+        <div className="main" id="main">
           {tenzies && <Confetti />}
           <h1 className="title">Tenzies</h1>
           <p className="instructions">
-            Roll until all dice are the same. Click each die to freeze it at its current value between rolls.
-          <br/>
-          <small className="instructions-italic">Game Starts at dice-roll or die-freeze instance.</small>
+            Roll until all dice are the same. Click each die to freeze it at its
+            current value between rolls.
+            <br />
+            <small className="instructions-italic">
+              Game Starts at dice-roll or die-freeze instance.
+            </small>
           </p>
-          <code style={{
-            fontWeight: 'bold'
-            
-          }}>
-            High Score: rolls [ {highScore?.rolls} ], time [ {highScore?.time?.minutes}m {highScore?.time?.seconds}s ], value [ {highScore?.value} ]
+          <code
+            style={{
+              fontWeight: "bold",
+            }}
+          >
+            High Score: rolls [ {highScore?.rolls} ], time [{" "}
+            {highScore?.time?.minutes}m {highScore?.time?.seconds}s ], value [{" "}
+            {highScore?.value} ]
           </code>
           <div className="dice-container">{diceElements}</div>
           <button className="dice-roll" onClick={rollDice}>
-            {tenzies ? 'New Game' : 'Roll'}
+            {tenzies ? "New Game" : "Roll"}
           </button>
           <div className="time-display">
             {isRunning && !tenzies ? (
@@ -184,22 +181,21 @@ function App() {
               </small>
             ) : null}
           </div>
-          <br/>
-          <small style={{fontFamily: 'Inter'}}>
+          <br />
+          <small style={{ fontFamily: "Inter" }}>
             {tenzies
               ? `You won in ${rollCount} rolls. Time taken: ${elapsedMinutes}m ${elapsedSeconds}s`
               : `Your Roll Count is ${rollCount}`}
           </small>
         </div>
-        
-        <div className='portfolio'>
+
+        <div className="portfolio">
           <Portfolio />
         </div>
-        
       </Split>
       <Footer />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
