@@ -20,6 +20,7 @@ body {
   font-family:'Basis Grotesque Regular Pro', "karla";
   background: rgba(197, 219, 254, 0.5);
   color: #460b38;
+  overflow-x: hidden;
 }
 
 .header {
@@ -41,22 +42,33 @@ body {
   font-family: "DrWeb Bold";
   cursor: pointer;
   
-} 
+}
 
+.main-container {
+  margin: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
 
-.main {
-  flex: 1;
-  margin: 30px;
-  height: 480px;
-  max-width: 800px;
+.content {
+  margin: 20px;
+  max-width: 400px;
+  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  padding: 20px;
+  font-family: 'Basis Grotesque Regular Pro'
+}
+
+.tenzies {
+  margin: 20px;
+  max-width: 500px;
   border-radius: 5px;
   padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  margin-right: -200px;
-  margin-left: 100px;
   box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.1);
 }
 
@@ -68,14 +80,13 @@ body {
 .instructions {
   font-family: 'Inter';
   font-weight: 400;
-  margin-top: 0;
   text-align: center;
 }
 
 .instructions-italic {
-  margin-top: 20px;
   font-style: italic;
   font-family: "Inter";
+  text-align: center;
 }
 
 .dice-container {
@@ -87,8 +98,8 @@ body {
 }
 
 .die-face {
-  height: 50px;
-  width: 50px;
+  height: 40px;
+  width: 40px;
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.15);
   border-radius: 10px;
   display: flex;
@@ -101,7 +112,7 @@ body {
   display: flex; /* Use flexbox to align dots */
   justify-content: space-around; /* Center dots horizontally */
   align-items: center; /* Center dots vertically */  
-  font-size: 4rem;
+  font-size: 3rem;
   height: 100%;
   width: 100%;
 }
@@ -130,30 +141,9 @@ code {
   font-family: 'Basis Grotesque Regular Pro'
 }
 
-.split {
-  display: flex;
-}
-
-.portfolio {
-  margin: 30px;
-  padding: 20px; 
-  padding-left: 50px;
-  flex: 1;
-  width: 1px;
-  margin-left: 250px;
-}
-
-
-footer {
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  padding: 20px;
-  border-top: 1px solid black;
-  font-family:'Basis Grotesque Regular Pro', "karla";
-}
-
 .portfolio-card {
+  margin: 20px;
+
   font-size: 14px;
   display: flex;
   flex-direction: column;
@@ -161,7 +151,6 @@ footer {
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.1);
-  margin-top: -20px;
 }
 
 .card-image {
@@ -210,16 +199,7 @@ footer {
   color: #59E391; /* Change the color on hover to make it blue (you can customize this color) */
 }
 
-.content {
-  flex: 1;
-  margin-top: 30px;
-  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.1);
-  margin-left: 40px;
-  margin-bottom: 80px;
-  border-radius: 5px;
-  padding: 20px;
-  font-family: 'Basis Grotesque Regular Pro'
-}
+
 
 .radio-button-container {
   display: inline-flex;
@@ -231,13 +211,13 @@ footer {
 .joke-button {
   height: 30px;
   width: 100px;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   font-family: 'Basis Grotesque Regular Pro';
   border: none;
   border-radius: 6px;
   background: rgba(59,130,246,.5);
   cursor: pointer;
-  margin-top: 10px;
+  margin-top: 20px;
   color: #460b38;
 }
 
@@ -270,4 +250,13 @@ footer {
   cursor: pointer;
   margin-top: 10px;
   color: #460b38;
+}
+
+footer {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  padding: 20px;
+  border-top: 1px solid black;
+  font-family:'Basis Grotesque Regular Pro', "karla";
 }

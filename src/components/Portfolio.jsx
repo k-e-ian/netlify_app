@@ -1,5 +1,6 @@
 import React from "react";
 import profilePhoto from "../assets/ian.jpg";
+import certificateImage from "../assets/ian_cert.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faGithub,
@@ -15,7 +16,16 @@ export default function Portfolio() {
       <img className="card-image" src={profilePhoto} alt="Avatar" />
       <div className="card-details">
         <h2 className="card-name">Ian Edwin Kitembe</h2>
-        <p className="card-occupation">Software Engineer</p>
+        <a
+          className="card-occupation"
+          href={certificateImage} // Set the href to the URL of your certificate image
+          target="_blank" // Open in a new tab
+          rel="noopener noreferrer"
+          style={{ textDecoration: "none" }}
+          title="Show Certificate"
+        >
+          Software Engineer
+        </a>
         <hr />
         <p className="card-about">
           Emerging technologies are my passion. I'm looking for companies who
@@ -25,7 +35,7 @@ export default function Portfolio() {
         <div className="card-contact">
           <span className="card-email">Email: ianedwin@outlook.com</span>
           <br />
-          <span className="card-phone">Phone: +254 741 448 692</span>
+          <span className="card-phone">Phone: +254 716 717 176</span>
           <hr />
           <div className="social-icons">
             <a

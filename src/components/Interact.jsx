@@ -34,7 +34,7 @@ export default function Content() {
   };
 
   return (
-    <div className="content">
+    <div>
       <p>Input your alias for a formal greeting from the developer:</p>
       <input
         type="text"
