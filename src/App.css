@@ -45,7 +45,7 @@ body {
 }
 
 .main-container {
-  margin: 20px;
+  margin: 10px;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;

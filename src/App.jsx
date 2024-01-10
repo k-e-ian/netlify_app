@@ -7,20 +7,20 @@ import Tenzies from "./components/Tenzies";
 
 function App() {
   return (
-    <div className='page'>
+    <>
       <Header />
-      <div className="main-container">
-        <div className="content">
+      <div className='main-container'>
+        <div className='content'>
           <Interact />
         </div>
-          <Tenzies />
+        <Tenzies />
         <div className='portfolio'>
           <Portfolio />
         </div>
       </div>
 
       <Footer />
-    </div>
+    </>
   );
 }
 
