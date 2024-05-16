@@ -61,7 +61,7 @@ const Tenzies = () => {
     }
 
     return () => clearInterval(interval);
-  }, [isRunning]);
+  }, [isRunning, tenzies]);
 
   function generateNewDie() {
     return {
@@ -103,6 +103,7 @@ const Tenzies = () => {
       setRollCount(0);
       setTenzies(false);
       setDice(allNewDice());
+      setShowConfetti(false)
     } else {
       if (!isRunning) {
         setIsRunning(true);
@@ -137,6 +138,9 @@ const Tenzies = () => {
 
   function isBetterScore(currentScore, savedScore) {
     // Compare based on rolls or time
+    if (!savedScore) {
+      return true; // Current score is better by default if no saved score
+    }
     if (currentScore.rolls < savedScore.rolls) {
       return true;
     } else if (currentScore.rolls === savedScore.rolls) {
